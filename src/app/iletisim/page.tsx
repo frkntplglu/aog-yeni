@@ -72,7 +72,7 @@ export default function IletisimPage() {
         <iframe
           title="Konum — Fethiye"
           src={`https://www.google.com/maps?q=${encodeURIComponent(contact.mapsQuery)}&output=embed`}
-          className="size-full grayscale invert-[0.9] hue-rotate-180"
+          className="size-full md:grayscale md:invert-[0.9] md:hue-rotate-180"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />

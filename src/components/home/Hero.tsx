@@ -7,6 +7,7 @@ import { ChevronDown } from "lucide-react";
 import { RevealText } from "@/components/ui/RevealText";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { hero } from "@/data/site";
+import { useLiteMotion } from "@/hooks/useLiteMotion";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -17,6 +18,7 @@ export function Hero() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const lite = useLiteMotion();
 
   return (
     <section
@@ -26,14 +28,14 @@ export function Hero() {
       <div className="bg-grid absolute inset-0" aria-hidden />
       <div
         aria-hidden
-        className="absolute -right-[20%] top-[10%] size-[80vw] max-w-[1100px] rounded-full bg-navy/70 blur-[140px]"
+        className="absolute -right-[20%] top-[10%] size-[80vw] max-w-[1100px] bg-[radial-gradient(closest-side,rgb(25_39_93/0.8),transparent)]"
       />
 
       {/* giant outlined background word */}
       <motion.div
         aria-hidden
-        style={{ x: bgX }}
-        className="text-stroke pointer-events-none absolute left-0 top-[14%] select-none whitespace-nowrap font-display text-[34vw] font-black italic leading-none text-white/[0.07]"
+        style={lite ? undefined : { x: bgX }}
+        className="text-stroke will-change-transform pointer-events-none absolute left-0 top-[14%] select-none whitespace-nowrap font-display text-[34vw] font-black italic leading-none text-white/[0.07]"
       >
         NO LIMITS NO LIMITS
       </motion.div>
@@ -63,7 +65,7 @@ export function Hero() {
       </div>
 
       <motion.div
-        style={{ y: portraitY }}
+        style={lite ? undefined : { y: portraitY }}
         initial={{ opacity: 0, scale: 1.15 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, delay: 0.7, ease }}
@@ -76,12 +78,12 @@ export function Hero() {
           height={750}
           preload
           sizes="(min-width: 768px) 400px, 70vw"
-          className="h-[62svh] w-auto max-w-none opacity-40 drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] md:h-[86svh] md:max-h-[820px] md:opacity-100"
+          className="h-[62svh] w-auto max-w-none opacity-40 md:h-[86svh] md:drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] md:max-h-[820px] md:opacity-100"
         />
       </motion.div>
 
       <motion.div
-        style={{ y: textY, opacity: fade }}
+        style={lite ? undefined : { y: textY, opacity: fade }}
         className="relative z-20 mx-auto w-full max-w-[1500px] px-5 pb-16 md:px-10 md:pb-24"
       >
         <motion.div

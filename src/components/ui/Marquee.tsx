@@ -28,7 +28,7 @@ export function Marquee({
   return (
     <div className={`flex overflow-hidden whitespace-nowrap ${className}`}>
       <div
-        className={`flex w-max ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+        className={`flex w-max will-change-transform ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
         style={{ "--marquee-duration": `${duration}s` } as CSSProperties}
       >
         {row(false)}

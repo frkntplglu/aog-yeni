@@ -6,7 +6,15 @@ import { ArrowUpRight } from "lucide-react";
 import type { MouseEvent } from "react";
 import { formatPrice, productUrl, type Product } from "@/data/site";
 
-export function ProductCard({ product, index = 0 }: { product: Product; index?: number }) {
+export function ProductCard({
+  product,
+  index = 0,
+  layout = false,
+}: {
+  product: Product;
+  index?: number;
+  layout?: boolean;
+}) {
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
   const rotateX = useSpring(useTransform(my, [0, 1], [8, -8]), { stiffness: 200, damping: 20 });
@@ -24,7 +32,7 @@ export function ProductCard({ product, index = 0 }: { product: Product; index?: 
 
   return (
     <motion.article
-      layout
+      layout={layout}
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9 }}

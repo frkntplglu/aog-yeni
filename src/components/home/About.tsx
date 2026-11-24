@@ -7,11 +7,13 @@ import { about } from "@/data/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
+import { useLiteMotion } from "@/hooks/useLiteMotion";
 
 export function About() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const lite = useLiteMotion();
 
   return (
     <section
@@ -28,7 +30,10 @@ export function About() {
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
             className="relative aspect-[4/5] overflow-hidden"
           >
-            <motion.div style={{ y: imgY }} className="absolute -inset-[12%]">
+            <motion.div
+              style={lite ? undefined : { y: imgY }}
+              className="absolute -inset-[12%] will-change-transform"
+            >
               <Image
                 src="/images/about.jpg"
                 alt="Ali Osman Gürsoy yarışma sahnesinde"

@@ -84,7 +84,7 @@ export function ProductsGrid() {
       >
         <AnimatePresence mode="popLayout">
           {list.map((p, i) => (
-            <ProductCard key={p.slug} product={p} index={i} />
+            <ProductCard key={p.slug} product={p} index={i} layout />
           ))}
         </AnimatePresence>
       </motion.div>

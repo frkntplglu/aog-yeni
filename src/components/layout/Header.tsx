@@ -37,7 +37,7 @@ export function Header() {
         animate={{ y: hidden ? "-110%" : "0%" }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          scrolled ? "bg-ink/80 backdrop-blur-xl" : "bg-transparent"
+          scrolled ? "bg-ink/95 md:bg-ink/80 md:backdrop-blur-xl" : "bg-transparent"
         }`}
       >
         <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between px-5 md:px-10">
